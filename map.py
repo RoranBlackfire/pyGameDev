@@ -7,8 +7,8 @@ class Map:
         self._sheet = sheet
         #print(self._sheet)
         self.map = gmap
-        print(self.map)
-        print(self.map[0][3])
+        # print(self.map)
+        # print(self.map[0][3])
         self.view = window_size
 
     def drawSurroundings(self, pos):

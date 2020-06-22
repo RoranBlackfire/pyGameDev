@@ -32,14 +32,14 @@ while True:
         if (event.type == pg.KEYDOWN and event.key == pg.K_DOWN):
             pos = pos[0], pos[1]+1
 
-        if(pos[0] <= 0):
-            pos = 0, pos[1]
-        if(pos[0] >= 200):
-            pos = 199, pos[1]
-        if(pos[1] <= 0):
-            pos = pos[0], 0
-        if(pos[1] >= 200):
-            pos = pos[0], 199
+    if(pos[0] <= 0):
+        pos = 0, pos[1]
+    if(pos[0] >= 200):
+        pos = 199, pos[1]
+    if(pos[1] <= 0):
+        pos = pos[0], 0
+    if(pos[1] >= 200):
+        pos = pos[0], 199
 
     screen.fill((0, 0, 0))
     screen.blit(m.drawSurroundings(pos), (0, 0))
