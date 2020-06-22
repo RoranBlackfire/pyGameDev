@@ -4,6 +4,8 @@ import random
 import map
 import constants as const
 
+#init pygame
+
 pg.init()
 
 screen = pg.display.set_mode(const.CONST_WINDOW_SIZE)
