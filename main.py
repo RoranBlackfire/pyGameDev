@@ -1,4 +1,5 @@
 import pygame as pg
+from pygame.locals import *
 import numpy as np
 import random
 import map
@@ -9,11 +10,12 @@ import constants as const
 pg.init()
 
 screen = pg.display.set_mode(const.CONST_WINDOW_SIZE)
+pg.display.set_caption("Prototyping")
 mapsheet = pg.image.load("res/Map/maptileset.png").convert_alpha()
 gmap = np.ndarray((200, 200), dtype=int)
 gmap.fill(0)
 
-for i in range(0, 50):
+for i in range(0, 150):
     gmap[random.randint(0, 199)][random.randint(0, 199)] = 1
 
 m = map.Map(mapsheet, gmap, const.CONST_WINDOW_SIZE)
