@@ -31,7 +31,7 @@ class  Stat:
       #  {
        #     return death()
         #}
-        
+
 
 class Entity:
     def __init__(self, pos, sprite):
@@ -46,7 +46,4 @@ class Entity:
         elif (key == pg.K_UP):
             self.pos -= (1, 0)
         elif (key == pg.K_DOWN):
-            self.pos -= (1, 0) 
-    
-if __name__ == "__main__" :
-    print(Coord(3, 2))
+            self.pos -= (1, 0)
