@@ -10,20 +10,23 @@ class Map:
         # print(self.map)
         # print(self.map[0][3])
         self.view = window_size
+        self.viewfoc = (0, 0)
 
     def drawSurroundings(self, pos):
-        if(pos[0] >= self.map.shape[0] - (self.view[0]/2)%32):
-            pos = self.map.shape[0] - (self.view[0]/2)%32, pos[1]
-        elif(pos[0] <= (self.view[0]/2)%32):
-            pos = (self.view[0]/2)%32, pos[1]
+        if(pos[0] >= self.map.shape[0] - const.CONST_VIEWPORT_SIZE[0]/2):
+            pos = self.map.shape[0] - const.CONST_VIEWPORT_SIZE[0]/2, pos[1]
+        elif(pos[0] <= const.CONST_VIEWPORT_SIZE[0]/2):
+            pos = const.CONST_VIEWPORT_SIZE[0]/2, pos[1]
 
-        if(pos[1] >= self.map.shape[1] - (self.view[1] / 2)%32):
-            pos = pos[0], self.map.shape[1] - (self.view[1] / 2)%32
-        elif(pos[1] <= (self.view[1] / 2)%32):
-            pos = pos[0], (self.view[1] / 2)%32
+        if(pos[1] >= self.map.shape[1] - const.CONST_VIEWPORT_SIZE[1]/2):
+            pos = pos[0], self.map.shape[1] - const.CONST_VIEWPORT_SIZE[1]/2
+        elif(pos[1] <= const.CONST_VIEWPORT_SIZE[1]/2):
+            pos = pos[0], const.CONST_VIEWPORT_SIZE[1]/2
 
         # pos = int((pos[0] - ((self.view[0]/2)%32))/32), int((pos[1] - ((self.view[1]/2)%32))/32)
-        pos = int(pos[0] - (self.view[0]/2)/32), int(pos[1] - (self.view[1]/2)/32)
+        pos = int(pos[0] - const.CONST_VIEWPORT_SIZE[0]/2), int(pos[1] - const.CONST_VIEWPORT_SIZE[1]/2)
+
+        self.viewfoc = pos
 
         cell1 = pg.Surface((32, 32)).convert_alpha()
         cell2 = pg.Surface((32, 32)).convert_alpha() # defining 2 empty surfaces
@@ -35,10 +38,20 @@ class Map:
         # drawing or "blitting" the cell surfaces onto the main viewport surface
         viewport = pg.Surface(self.view)
         for i in range(0, int(self.view[0]/32)):
-            for j in range(0, int(self.view[1]%32)):
+            for j in range(0, int(self.view[1]/32)):
                 if(self.map[int(pos[0]+i)%200][int(pos[1]+j)%200] == 0):
                     viewport.blit(cell1, (i*32, j*32))
                 else:
                     viewport.blit(cell2, (i*32, j*32))
 
         return viewport
+
+    # def drawEntities(self, viewport, entlist):
+    #     for i in entlist:
+    #         x, y = i.pos.x - self.viewfoc, i.pos.y - self.viewfoc
+    #         if(x < )
+    #         viewport.blit(i.sprite, (i.pos.x - self.viewfoc[0], i.pos.y - self.viewfoc))
+
+    #     return viewport
+
+    

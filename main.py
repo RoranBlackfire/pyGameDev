@@ -4,15 +4,26 @@ import numpy as np
 import random
 import map
 import constants as const
+import entity as ent
 
 #init pygame
 
 pg.init()
 
+
+# this is a temporary class just to get a player sprite
+# to appear
+# class Player:
+#     def __init__(self, pos, sprite):
+#         self.pos = pos
+#         self.sprite = sprite
+
+
 screen = pg.display.set_mode(const.CONST_WINDOW_SIZE)
 pg.display.set_caption("Prototyping")
+playersheet = pg.image.load("res/Male/Male 01-1.png").convert_alpha()
 mapsheet = pg.image.load("res/Map/maptileset.png").convert_alpha()
-gmap = np.ndarray((200, 200), dtype=int)
+gmap = np.ndarray(const.CONST_MAP_SIZE, dtype=int)
 gmap.fill(0)
 
 for i in range(0, 150):
@@ -43,6 +54,8 @@ while True:
     if(pos[1] >= 200):
         pos = pos[0], 199
 
+    viewport = m.drawSurroundings(pos)
+
     screen.fill((0, 0, 0))
-    screen.blit(m.drawSurroundings(pos), (0, 0))
+    screen.blit(viewport, (0, 0))
     pg.display.flip()
