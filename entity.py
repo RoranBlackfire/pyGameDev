@@ -39,11 +39,11 @@ class Entity:
     def move(self, key):
         if (key == pg.K_LEFT):
             self.pos -= (1, 0)
-        else if (key == pg.K_RIGHT):
+        elif (key == pg.K_RIGHT):
             self.pos += (1, 0)
-        else if (key == pg.K_UP):
+        elif (key == pg.K_UP):
             self.pos -= (1, 0)
-        else if (key == pg.K_DOWN):
+        elif (key == pg.K_DOWN):
             self.pos -= (1, 0) 
     
 
