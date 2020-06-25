@@ -28,8 +28,8 @@ class Map:
 
         self.viewfoc = pos
 
-        cell1 = pg.Surface((32, 32)).convert_alpha()
-        cell2 = pg.Surface((32, 32)).convert_alpha() # defining 2 empty surfaces
+        cell1 = pg.Surface((32, 32), pg.SRCALPHA)
+        cell2 = pg.Surface((32, 32), pg.SRCALPHA) # defining 2 empty surfaces
         cell1.blit(self._sheet, (0, 0), pg.Rect((0, 0), const.CONST_SPRITE_SIZE))
         cell2.blit(self._sheet, (0, 0), pg.Rect((5*32, 0), const.CONST_SPRITE_SIZE))
         # drawing the map cell from the spritesheet for the map to the 2 empty

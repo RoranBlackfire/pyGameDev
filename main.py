@@ -21,12 +21,12 @@ pg.init()
 
 screen = pg.display.set_mode(const.CONST_WINDOW_SIZE)
 pg.display.set_caption("Prototyping")
-playersheet = pg.image.load("res/Male/Male 01-1.png").convert_alpha()
+playersheet = pg.image.load("res/Male/Male 01-1.png")
 selec = pg.image.load("res/misc/selector.png")
-selecsurf = pg.Surface(const.CONST_SPRITE_SIZE).convert_alpha()
+selecsurf = pg.Surface(const.CONST_SPRITE_SIZE, pg.SRCALPHA)
+# thank reddit for this XD
 selecsurf.blit(selec, (0, 0))
-selecsurf.convert_alpha()
-mapsheet = pg.image.load("res/Map/maptileset.png").convert_alpha()
+mapsheet = pg.image.load("res/Map/maptileset.png")
 gmap = np.ndarray(const.CONST_MAP_SIZE, dtype=int)
 gmap.fill(0)
 
