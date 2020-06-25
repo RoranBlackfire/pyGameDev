@@ -26,10 +26,13 @@ class Map:
         pos = int(pos[0] - (self.view[0]/2)/32), int(pos[1] - (self.view[1]/2)/32)
 
         cell1 = pg.Surface((32, 32)).convert_alpha()
-        cell2 = pg.Surface((32, 32)).convert_alpha()
+        cell2 = pg.Surface((32, 32)).convert_alpha() # defining 2 empty surfaces
         cell1.blit(self._sheet, (0, 0), pg.Rect((0, 0), const.CONST_SPRITE_SIZE))
         cell2.blit(self._sheet, (0, 0), pg.Rect((5*32, 0), const.CONST_SPRITE_SIZE))
+        # drawing the map cell from the spritesheet for the map to the 2 empty
+        # surfaces
 
+        # drawing or "blitting" the cell surfaces onto the main viewport surface
         viewport = pg.Surface(self.view)
         for i in range(0, int(self.view[0]/32)):
             for j in range(0, int(self.view[1]%32)):
