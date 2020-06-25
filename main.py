@@ -22,6 +22,10 @@ pg.init()
 screen = pg.display.set_mode(const.CONST_WINDOW_SIZE)
 pg.display.set_caption("Prototyping")
 playersheet = pg.image.load("res/Male/Male 01-1.png").convert_alpha()
+selec = pg.image.load("res/misc/selector.png")
+selecsurf = pg.Surface(const.CONST_SPRITE_SIZE).convert_alpha()
+selecsurf.blit(selec, (0, 0))
+selecsurf.convert_alpha()
 mapsheet = pg.image.load("res/Map/maptileset.png").convert_alpha()
 gmap = np.ndarray(const.CONST_MAP_SIZE, dtype=int)
 gmap.fill(0)
@@ -31,6 +35,9 @@ for i in range(0, 150):
 
 m = map.Map(mapsheet, gmap, const.CONST_WINDOW_SIZE)
 pos = (50, 50)
+selector = ent.Entity(ent.Coord(pos), selecsurf)
+
+sprlist = [selector]
 
 while True:
     for event in pg.event.get():
@@ -54,8 +61,10 @@ while True:
     if(pos[1] >= 200):
         pos = pos[0], 199
 
+    sprlist[0].pos = ent.Coord(pos)
+
     viewport = m.drawSurroundings(pos)
 
     screen.fill((0, 0, 0))
-    screen.blit(viewport, (0, 0))
+    screen.blit(m.drawEntities(viewport, sprlist), (0, 0))
     pg.display.flip()

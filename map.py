@@ -13,18 +13,18 @@ class Map:
         self.viewfoc = (0, 0)
 
     def drawSurroundings(self, pos):
-        if(pos[0] >= self.map.shape[0] - const.CONST_VIEWPORT_SIZE[0]/2):
-            pos = self.map.shape[0] - const.CONST_VIEWPORT_SIZE[0]/2, pos[1]
-        elif(pos[0] <= const.CONST_VIEWPORT_SIZE[0]/2):
-            pos = const.CONST_VIEWPORT_SIZE[0]/2, pos[1]
+        if(pos[0] >= self.map.shape[0] - (const.CONST_VIEWPORT_SIZE[0]/2 - 1)):
+            pos = self.map.shape[0] - (const.CONST_VIEWPORT_SIZE[0]/2 - 1), pos[1]
+        elif(pos[0] <= (const.CONST_VIEWPORT_SIZE[0]/2 - 1)):
+            pos = (const.CONST_VIEWPORT_SIZE[0]/2 - 1), pos[1]
 
-        if(pos[1] >= self.map.shape[1] - const.CONST_VIEWPORT_SIZE[1]/2):
-            pos = pos[0], self.map.shape[1] - const.CONST_VIEWPORT_SIZE[1]/2
-        elif(pos[1] <= const.CONST_VIEWPORT_SIZE[1]/2):
-            pos = pos[0], const.CONST_VIEWPORT_SIZE[1]/2
+        if(pos[1] >= self.map.shape[1] - (const.CONST_VIEWPORT_SIZE[1]/2 - 1)):
+            pos = pos[0], self.map.shape[1] - (const.CONST_VIEWPORT_SIZE[1]/2 - 1)
+        elif(pos[1] <= (const.CONST_VIEWPORT_SIZE[1]/2 - 1)):
+            pos = pos[0], (const.CONST_VIEWPORT_SIZE[1]/2 - 1)
 
         # pos = int((pos[0] - ((self.view[0]/2)%32))/32), int((pos[1] - ((self.view[1]/2)%32))/32)
-        pos = int(pos[0] - const.CONST_VIEWPORT_SIZE[0]/2), int(pos[1] - const.CONST_VIEWPORT_SIZE[1]/2)
+        pos = int(pos[0] - const.CONST_VIEWPORT_SIZE[0]/2 + 1), int(pos[1] - const.CONST_VIEWPORT_SIZE[1]/2 + 1)
 
         self.viewfoc = pos
 
@@ -46,12 +46,14 @@ class Map:
 
         return viewport
 
-    # def drawEntities(self, viewport, entlist):
-    #     for i in entlist:
-    #         x, y = i.pos.x - self.viewfoc, i.pos.y - self.viewfoc
-    #         if(x < )
-    #         viewport.blit(i.sprite, (i.pos.x - self.viewfoc[0], i.pos.y - self.viewfoc))
+    def drawEntities(self, viewport, entlist):
+        for i in entlist:
+            (x, y) = (i.pos.x - self.viewfoc[0], i.pos.y - self.viewfoc[1])
+            print(x, y)
+            print(i.pos.x, i.pos.y)
+            if(x < const.CONST_VIEWPORT_SIZE[0] and y < const.CONST_VIEWPORT_SIZE[1] and x >= 0 and y >= 0):
+                viewport.blit(i.sprite, ((i.pos.x - self.viewfoc[0])*32, (i.pos.y - self.viewfoc[1])*32))
 
-    #     return viewport
+        return viewport
 
     
