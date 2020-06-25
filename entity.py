@@ -23,6 +23,12 @@ class Coord:
 
 class  Stat:
     def __init__(self, hlt, nrg):
+        self.hlt = 100  #player's default health
+        self.nrg = 100  #player's defualt energy
+       # if(self.hlt < 0)
+        #{
+        #    death()
+        #}
         
 
 class Entity:
