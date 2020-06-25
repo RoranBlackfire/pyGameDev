@@ -23,13 +23,13 @@ class Coord:
 
 class  Stat:
     def __init__(self, hlt, nrg):
-        self.hlt = 100  #player's default health
-        self.nrg = 100  #player's defualt energy
+        self.hlt = hlt  #player's default health
+        self.nrg = nrg  #player's defualt energy
        # if(self.hlt < 0)
         #{
         #    death()
         #}
-        
+
 
 class Entity:
     def __init__(self, pos, sprite):
@@ -44,6 +44,4 @@ class Entity:
         elif (key == pg.K_UP):
             self.pos -= (1, 0)
         elif (key == pg.K_DOWN):
-            self.pos -= (1, 0) 
-    
-
+            self.pos -= (1, 0)
