@@ -49,8 +49,8 @@ class Map:
     def drawEntities(self, viewport, entlist):
         for i in entlist:
             (x, y) = (i.pos.x - self.viewfoc[0], i.pos.y - self.viewfoc[1])
-            print(x, y)
-            print(i.pos.x, i.pos.y)
+            # print(x, y)
+            # print(i.pos.x, i.pos.y)
             if(x < const.CONST_VIEWPORT_SIZE[0] and y < const.CONST_VIEWPORT_SIZE[1] and x >= 0 and y >= 0):
                 viewport.blit(i.sprite, ((i.pos.x - self.viewfoc[0])*32, (i.pos.y - self.viewfoc[1])*32))
 
