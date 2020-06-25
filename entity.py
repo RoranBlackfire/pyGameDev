@@ -22,7 +22,7 @@ class Coord:
 
 
 class  Stat:
-    def __init__(self, hlt, nrg, hltrt, nrgrt):
+    def __init__(self, hlt, nrg):
         
 
 class Entity:
