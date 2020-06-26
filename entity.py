@@ -8,10 +8,6 @@ class Coord:
         self.y = y
         self.elev = elev
 
-    def __init__(self, pos, elev=0):
-        self.x, self.y = pos
-        self.elev = elev
-
     def __add__(self, other):
         return Coord(self.x + other.x, self.y + other.y, self.elev + other.elev)
 
@@ -27,8 +23,8 @@ class Coord:
 
 class  Stat:
     def __init__(self, hlt, nrg):
-        self.hlt = hlt  # default health
-        self.nrg = nrg  # defualt energy
+        self.hlt = 100  # default health
+        self.nrg = 100  # defualt energy
     
     #def rip(self, hlt):
      #   if(self.hlt < 0)
@@ -42,13 +38,17 @@ class Entity:
         self.pos = pos
         self.sprite = sprite
 
-    # def move(self, key):
-    #     if (key == pg.K_LEFT):
-    #         self.pos -= (1, 0)
-    #     elif (key == pg.K_RIGHT):
-    #         self.pos += (1, 0)
-    #     elif (key == pg.K_UP):
-    #         self.pos -= (1, 0)
-    #     elif (key == pg.K_DOWN):
-    #         self.pos -= (1, 0)
+    def move(self, key):
+        if (key == pg.K_LEFT):
+            self.pos -= (1, 0)
+        elif (key == pg.K_RIGHT):
+            self.pos += (1, 0)
+        elif (key == pg.K_UP):
+            self.pos -= (1, 0)
+        elif (key == pg.K_DOWN):
+            self.pos -= (1, 0)
 
+class Player(Entity):
+
+
+    
