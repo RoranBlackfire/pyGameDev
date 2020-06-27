@@ -8,6 +8,11 @@ class Coord:
         self.y = y
         self.elev = elev
 
+    def __init__(self, pos, elev=0):
+        self.x = pos[0]
+        self.y = pos[1]
+        self.elev = elev
+
     def __add__(self, other):
         return Coord(self.x + other.x, self.y + other.y, self.elev + other.elev)
 
@@ -48,7 +53,7 @@ class Entity:
         elif (key == pg.K_DOWN):
             self.pos -= (1, 0)
 
-class Player(Entity):
+# class Player(Entity):
 
 
     
